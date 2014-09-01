@@ -67,12 +67,14 @@ public class JSONController {
 			doc = Jsoup.connect("http://asipasa.com").get();
 			Element ultimoItem=doc.select("div.box_content").select("a").first();
 			
-			
-			
 			int ultimo=Integer.valueOf(ultimoItem.select("a").attr("href"));
 			
+			
+			
 			int inicioUltimo=(ultimo)-contador;
-			ultimo=inicioUltimo-1;
+			ultimo=inicioUltimo;
+			
+			
 		
 			for(int i=0;i<=10;i++){
 				doc = Jsoup.connect("http://asipasa.com/"+ultimo).get();

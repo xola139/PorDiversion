@@ -12,6 +12,7 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.pordiversion.bean.Imagen;
 
@@ -19,7 +20,7 @@ import com.pordiversion.bean.Imagen;
 public class ImagesController {
 	
 	
-    @RequestMapping("/xd")
+	@RequestMapping(value = "/", method = RequestMethod.GET)
     public String logTasPage( ModelMap model) {
 								Document doc;
 								try {

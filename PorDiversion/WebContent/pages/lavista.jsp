@@ -1,5 +1,11 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.pordiversion.bean.Imagen" %>
+<%@ page contentType="text/html; charset=iso-8859-1" language="java"  %>
+<%
+  String getURL=request.getRequestURL().toString();
+  String path = request.getContextPath();
+  String getDomain=request.getServerName();
+%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -32,9 +38,10 @@
 			  var l = Ladda.create(this);
 			 	l.start();
 			  var nPage=$("#hiddenAsiPasa").val();
-			  var newValue=Number(nPage)+6;
+			  var newValue=Number(nPage)+11;
 			  $.get( "rest/getImagenAsiPasa/"+nPage, function( data ) {
-				  $("#hiddenAsiPasa").attr("value",newValue);  
+				  $("#hiddenAsiPasa").attr("value",newValue); 
+				  	
 				  $.each(data,function(index,valor){
 						$("#contenidoAsiPasa").append("<div class=\"row\">"+
 							  "	<div class=\"portfolio-item\">"+
@@ -198,7 +205,7 @@
       
        <div class="tab-pane fade" id="asipasa">
          <div id="contenidoAsiPasa">
-      		<input type="hidden" value="5" id="hiddenAsiPasa">
+      		<input type="hidden" value="11" id="hiddenAsiPasa">
        <%
          		List<Imagen> imagenesChistedia = (List<Imagen>)request.getAttribute("imageneshistedeldia");
 				nv=0;

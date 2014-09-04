@@ -30,6 +30,7 @@
   
   
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/custom-functions.js"></script>
   
 	
 	<script>
@@ -100,17 +101,24 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="xd.html">Solo por Diversi&oacute;n</a>
+                <div class="contentNav" >
+                	<a   href="xd.html">Solo por Diversi&oacute;n</a>
+                	<a   id="xd_0" href="#" class="round-button">Q</a>
+                	<a   id="xd_1" href="#" class="round-button">E</a>
+                	<a   id="xd_2" href="#" class="round-button">A</a>
+                	<a   id="xd_3" href="#" class="round-button">N</a>
+                </div>
+                
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#about">About</a>
+                    <li>
                     </li>
-                    <li><a href="#services">Services</a>
+                    <li>
                     </li>
-                    <li><a href="#contact">Contact</a>
+                    <li>
                     </li>
                 </ul>
             </div>
@@ -130,9 +138,9 @@
 	<div class="bs-example bs-example-tabs">
     <ul id="myTab" class="nav nav-tabs">
       <li class="active"><a href="#home" data-toggle="tab">Que Jalada</a></li>
-      <li><a href="#profile" data-toggle="tab">Esgag</a></li>
-      <li><a href="#asipasa" data-toggle="tab">Asi pasa</a></li>
-      <li><a href="#ND" data-toggle="tab">Nuevo y D</a></li>
+      <li ><a href="#profile" data-toggle="tab">Esgag</a></li>
+      <li ><a href="#asipasa" data-toggle="tab">Asi pasa</a></li>
+      <li ><a href="#ND" data-toggle="tab">Nuevo y D</a></li>
       
     </ul>
     <div id="myTabContent" class="tab-content">

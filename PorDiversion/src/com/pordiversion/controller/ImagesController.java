@@ -23,6 +23,13 @@ public class ImagesController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
     public String logTasPage( ModelMap model) {
 								Document doc;
+								
+								System.getProperties().put( "proxySet", "true" );
+								System.getProperties().put( "socksProxyHost", "127.0.0.1" );
+								System.getProperties().put( "socksProxyPort", "9150" );
+								
+								
+								
 								try {
 									doc = Jsoup.connect("http://quejalada.com/").get();
 									Elements elementos=doc.select("div.entry-content").select("p").select("a");

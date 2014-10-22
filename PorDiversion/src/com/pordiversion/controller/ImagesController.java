@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pordiversion.bean.Imagen;
 
@@ -23,13 +24,6 @@ public class ImagesController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
     public String logTasPage( ModelMap model) {
 								Document doc;
-								
-								System.getProperties().put( "proxySet", "true" );
-								System.getProperties().put( "socksProxyHost", "127.0.0.1" );
-								System.getProperties().put( "socksProxyPort", "9150" );
-								
-								
-								
 								try {
 									doc = Jsoup.connect("http://quejalada.com/").get();
 									Elements elementos=doc.select("div.entry-content").select("p").select("a");
@@ -45,7 +39,7 @@ public class ImagesController {
 								
 									doc = Jsoup.connect("http://www.esgag.com/").get();
 									elementos=doc.select("div[class*=badge-post-container]").select("div").select("a").select("img");
-									System.out.println(elementos.size());
+									
 								
 									List<Imagen> lstImgEsgag=new ArrayList<Imagen>();
 								
@@ -105,6 +99,14 @@ public class ImagesController {
     }
     
     
+	@RequestMapping(value="/laImagen",method = RequestMethod.GET)
+    public String theImage(@RequestParam(value="laURL") String laURL,ModelMap model) {
+		model.addAttribute("URLimagen", laURL);
+	
+		return "TheImage";
+		
+	}
+	
     @RequestMapping("/test")
     public String flujoACliente() {
 		//SocketReader.arranca();

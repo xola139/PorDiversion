@@ -1,5 +1,5 @@
-<%@ page import="java.util.List" %>
 <%@ page import="com.pordiversion.bean.Imagen" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=iso-8859-1" language="java"  %>
 <%
   String getURL=request.getRequestURL().toString();
@@ -20,6 +20,7 @@
 	<link href="css/ladda-themeless.min.css" rel="stylesheet">
 	<link href="css/custom.css" rel="stylesheet">
 	
+	
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -31,9 +32,12 @@
   
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="js/custom-functions.js"></script>
-  
+
 	
 	<script>
+
+
+	
 	$(document).ready(function(){
 		  $("#btnAsiPasa").on("click",function(){
 			  var l = Ladda.create(this);
@@ -86,6 +90,37 @@
 	
   </head>
   <body >
+  
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '291537724382227',
+      xfbml      : true,
+      version    : 'v2.1'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/es_LA/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  
+  
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=291537724382227&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+  
     <a href="#" class="scrollup">Scroll</a>
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -93,36 +128,29 @@
     
     
      <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-        <div class="container">
+        <div class="container MyHeader">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Navegacion</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+                
                 <div class="contentNav" >
-                	<a   href="xd.html">Solo por Diversi&oacute;n</a>
-                	<a   id="xd_0" href="#" class="round-button">Q</a>
-                	<a   id="xd_1" href="#" class="round-button">E</a>
-                	<a   id="xd_2" href="#" class="round-button">A</a>
-                	<a   id="xd_3" href="#" class="round-button">N</a>
+                	<div>
+                	   <a   href="#"><img src="images/logo.png"  class="img-circle" style="width: 30px;height: 30px;"/><span class="MyTitle">Solo por Diversión</span> </a>
+                	</div>
+                	
+					<div class='buttons'>
+						<a id="xd_0" class='active' href='#' title='Title 1'>&#x2606;</a>
+			      		<a id="xd_1" href='#' title='Title 2'>&#x262F;</a>
+			      		<a id="xd_2" href='#' title='Title 3'>&#x2666;</a>
+			      		<a id="xd_3" href='#' title='Title 4'>&#x267A;</a>
+			    	</div>
+
                 </div>
+                
+                
+                
                 
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav">
-                    <li>
-                    </li>
-                    <li>
-                    </li>
-                    <li>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+
         </div>
         <!-- /.container -->
     </nav>
@@ -143,21 +171,34 @@
       <li ><a href="#ND" data-toggle="tab">Nuevo y D</a></li>
       
     </ul>
+    
+    <div class="fb-like" data-href="http://www.xdiversion.com" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
+    
+    
+    
+    
+    
     <div id="myTabContent" class="tab-content">
       <div class="tab-pane fade in active" id="home">
       	<div id="contenidoQueJalada">
       		<input type="hidden" value="2" id="hiddenQueJalada">
       		<%
+      		int contadorShared=0;
          		List<Imagen> imagenes = (List<Imagen>)request.getAttribute("imagenes");
 				int nv=0;
 				for(Imagen e : imagenes){
 			    	if(nv==0){
+			    		contadorShared++;
 			    		%>
               			<div class="row">
 					<%}%>
 		            		<div class="portfolio-item">
 		                		<img class="img-responsive img-thumbnail" style="width:auto; height:auto;" src="<%=e.getImg() %>" />
+		                	</div>
+		        		    <div style="text-align: center;">
+		        		   		<div class="fb-like" data-href="http://xdiversion.com/laImagen?laURL=<%=e.getImg() %>" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
 		        		    </div>
+		        		    
 					<%nv++;
 					  if(nv==2){
 					%>
@@ -189,10 +230,11 @@
               			<div class="row">
 					<%}%>
 		            		<div class="portfolio-item">
-		                		
-			    	                    <img class="img-responsive img-thumbnail" style="width:auto; height:auto;" src="<%=e.getImg() %>" />
-		        		        
-		                	</div>
+		                		<img class="img-responsive img-thumbnail" style="width:auto; height:auto;" src="<%=e.getImg() %>" />
+		        		    </div>
+		                	<div style="text-align: center;">
+		        		   		<div class="fb-like" data-href="http://xdiversion.com/laImagen?laURL=<%=e.getImg() %>" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
+		        		    </div>
 					<%nv++;
 					  if(nv==2){
 					%>
@@ -223,10 +265,11 @@
               			<div class="row">
 					<%}%>
 		            		<div class="portfolio-item">
-		                		
-			    	                    <img class="img-responsive img-thumbnail" style="width:auto; height:auto;" src="<%=e.getImg() %>" />
-		        		        
-		                	</div>
+		                		<img class="img-responsive img-thumbnail" style="width:auto; height:auto;" src="<%=e.getImg() %>" />
+			    	        </div>
+		                	<div style="text-align: center;">
+		        		   		<div class="fb-like" data-href="http://xdiversion.com/laImagen?laURL=<%=e.getImg() %>" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
+		        		    </div>
 					<%nv++;
 					  if(nv==2){
 					%>
@@ -263,10 +306,12 @@
               			<div class="row">
 					<%}%>
 		            		<div class="portfolio-item">
-		                		
-			    	                    <img class="img-responsive img-thumbnail" style="width:auto	; height:auto;" src="<%=e.getImg() %>" />
-		        		        
-		                	</div>
+		                		<img class="img-responsive img-thumbnail" style="width:auto	; height:auto;" src="<%=e.getImg() %>" />
+		        		    </div>
+		        		    
+		        		    <div style="text-align: center;">
+		        		   		<div class="fb-like" data-href="http://xdiversion.com/laImagen?laURL=<%=e.getImg() %>" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
+		        		    </div>
 					<%nv++;
 					  if(nv==2){
 					%>
@@ -298,16 +343,18 @@
 	  </div>
 	  </div>
     
-    <footer>
+    
+    
+</div>	
+
+
+  <div class="myFooter">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="">
                     <p>Copyright &copy; Por Diversion 2014</p>
                 </div>
             </div>
-        </footer>
-    
-</div>	
-    
+        </div> 
     
     <script src="js/funciones-QueJalada.js"></script>
     <script src="js/spin.min.js"></script>

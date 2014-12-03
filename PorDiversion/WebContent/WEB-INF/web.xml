@@ -5,6 +5,10 @@
 	<display-name>pordiversion</display-name>
   	<description>pordiversion</description>
 
+ <listener>
+    <listener-class>com.pordiversion.servlet.PorDiversionServletContextListener</listener-class>
+  </listener>
+ 
 
 
 <!-- ************************** spring MVC **************************  -->

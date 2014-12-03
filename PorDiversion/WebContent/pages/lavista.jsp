@@ -1,5 +1,5 @@
 <%@ page import="com.pordiversion.bean.Imagen" %>
-<%@ page import="java.util.List" %>
+<%@ page import="java.util.*" %>
 <%@ page contentType="text/html; charset=iso-8859-1" language="java"  %>
 <%
   String getURL=request.getRequestURL().toString();
@@ -182,71 +182,52 @@
       <div class="tab-pane fade in active" id="home">
       	<div id="contenidoQueJalada">
       		<input type="hidden" value="2" id="hiddenQueJalada">
+      		
       		<%
-      		int contadorShared=0;
-         		List<Imagen> imagenes = (List<Imagen>)request.getAttribute("imagenes");
-				int nv=0;
-				for(Imagen e : imagenes){
-			    	if(nv==0){
-			    		contadorShared++;
+      		 Map<String,Imagen> m = ( Map<String,Imagen>)request.getAttribute("mapImagenes");
+				
+	      		Set set = m.entrySet();
+				Iterator i = set.iterator();
+				while(i.hasNext()) {
+				Map.Entry me = (Map.Entry)i.next();
+				Imagen obj=(Imagen)me.getValue();
+				String k=me.getKey().toString();
+				String titulo=obj.getTitle();
+				
 			    		%>
               			<div class="row">
-					<%}%>
-		            		<div class="portfolio-item">
-		                		<img class="img-responsive img-thumbnail" style="width:auto; height:auto;" src="<%=e.getImg() %>" />
+					
+					
+						
+						
+						
+							<div class="portfolio-item">
+		                		<div><h3><%=titulo %></h3></div>
+		                		<img class="img-responsive img-thumbnail" style="width:auto; height:auto;" src="<%=k %>" />
 		                	</div>
 		        		    <div style="text-align: center;">
-		        		   		<div class="fb-like" data-href="http://xdiversion.com/laImagen?laURL=<%=e.getImg() %>" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
+		        		    	
+		        		   		<div class="fb-like" data-href="http://xdiversion.com/laImagen?laURL=<%=k %>" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
 		        		    </div>
-		        		    
-					<%nv++;
-					  if(nv==2){
-					%>
+						
 						</div>
-					<%nv=0; 
-					}
-					}//fin for
-					  if(nv==1){
-						%>
-						</div>
+						
 					<% }
 					%>
+      		
+      		
+      		
         	</div>
                 
                 <div class="centrardiv">
-                	<button  id="btnQueJalanda" class="btn btn-primary ladda-button" data-style="expand-left"><span class="ladda-label" >Quiero ver mas.. Ahora!!!</span><span class="ladda-spinner"></span><div class="ladda-progress" style="width: 0px;"></div></button>
+<!--                 	<button  id="btnQueJalanda" class="btn btn-primary ladda-button" data-style="expand-left"><span class="ladda-label" >Quiero ver mas.. Ahora!!!</span><span class="ladda-spinner"></span><div class="ladda-progress" style="width: 0px;"></div></button> -->
                 </div>
                 
                 
 	  </div>
       <div class="tab-pane fade" id="profile">
       
-        <%
-         		List<Imagen> imagenesEsgag = (List<Imagen>)request.getAttribute("imagenesEsgag");
-				nv=0;
-				for(Imagen e : imagenesEsgag){
-			    	if(nv==0){
-			    		%>
-              			<div class="row">
-					<%}%>
-		            		<div class="portfolio-item">
-		                		<img class="img-responsive img-thumbnail" style="width:auto; height:auto;" src="<%=e.getImg() %>" />
-		        		    </div>
-		                	<div style="text-align: center;">
-		        		   		<div class="fb-like" data-href="http://xdiversion.com/laImagen?laURL=<%=e.getImg() %>" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
-		        		    </div>
-					<%nv++;
-					  if(nv==2){
-					%>
-						</div>
-					<%nv=0; 
-					}
-					}//fin for
-					  if(nv==1){
-						%>
-						</div>
-					<% }
-					%>
+        
 					
 			
                 
@@ -256,32 +237,7 @@
        <div class="tab-pane fade" id="asipasa">
          <div id="contenidoAsiPasa">
       		<input type="hidden" value="11" id="hiddenAsiPasa">
-       <%
-         		List<Imagen> imagenesChistedia = (List<Imagen>)request.getAttribute("imageneshistedeldia");
-				nv=0;
-				for(Imagen e : imagenesChistedia){
-			    	if(nv==0){
-			    		%>
-              			<div class="row">
-					<%}%>
-		            		<div class="portfolio-item">
-		                		<img class="img-responsive img-thumbnail" style="width:auto; height:auto;" src="<%=e.getImg() %>" />
-			    	        </div>
-		                	<div style="text-align: center;">
-		        		   		<div class="fb-like" data-href="http://xdiversion.com/laImagen?laURL=<%=e.getImg() %>" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
-		        		    </div>
-					<%nv++;
-					  if(nv==2){
-					%>
-						</div>
-					<%nv=0; 
-					}
-					}//fin for
-					  if(nv==1){
-						%>
-						</div>
-					<% }
-					%>
+       
        
        
        </div>
@@ -297,33 +253,6 @@
           
           
           
-             <%
-         		List<Imagen> imagenesND = (List<Imagen>)request.getAttribute("imagenesND");
-				nv=0;
-				for(Imagen e : imagenesND){
-			    	if(nv==0){
-			    		%>
-              			<div class="row">
-					<%}%>
-		            		<div class="portfolio-item">
-		                		<img class="img-responsive img-thumbnail" style="width:auto	; height:auto;" src="<%=e.getImg() %>" />
-		        		    </div>
-		        		    
-		        		    <div style="text-align: center;">
-		        		   		<div class="fb-like" data-href="http://xdiversion.com/laImagen?laURL=<%=e.getImg() %>" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
-		        		    </div>
-					<%nv++;
-					  if(nv==2){
-					%>
-						</div>
-					<%nv=0; 
-					}
-					}//fin for
-					  if(nv==1){
-						%>
-						</div>
-					<% }
-					%>
        
           
      

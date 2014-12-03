@@ -3,6 +3,15 @@ package com.pordiversion.bean;
 public class Imagen {
 
 	String img;
+	String title;
+	long fecha;
+	
+	public long getFecha() {
+		return fecha;
+	}
+	public void setFecha(long fecha) {
+		this.fecha = fecha;
+	}
 	public String getImg() {
 		return img;
 	}
@@ -15,5 +24,5 @@ public class Imagen {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	String title;
+	
 }
